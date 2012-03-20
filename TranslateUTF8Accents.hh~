@@ -1,0 +1,22 @@
+#ifndef TRANSTLATE_UTF8_ACCENTS_H_
+#define TRANSTLATE_UTF8_ACCENTS_H_
+
+#include <map>
+#include <string>
+
+using namespace echo;
+using namespace std;
+
+class TranslateUTF8Accents  {
+public:
+    TranslateUTF8Accents();
+    void removeUTF8Accents (string& p_data);
+private:
+    uint32 translate (const char& p_input, char& p_output);
+    string utf8Encode(const string& w_src); // Encode an ISO-8859-1 string to UTF-8
+    string utf8Decode(const string& w_src); // Decode an ISO-8859-1 string from UTF-8
+    std::map<char, char> m_charactersMap;
+};
+
+
+#endif //TRANSTLATE_UTF8_ACCENTS_H_
