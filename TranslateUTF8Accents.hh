@@ -4,7 +4,6 @@
 #include <map>
 #include <string>
 
-using namespace echo;
 using namespace std;
 
 class TranslateUTF8Accents  {
@@ -15,7 +14,7 @@ private:
     void translate (const char& p_input, char& p_output);
     string utf8Encode(const string& w_src); // Encode an ISO-8859-1 string to UTF-8
     string utf8Decode(const string& w_src); // Decode an ISO-8859-1 string from UTF-8
-    std::map<char, char> m_charactersMap;
+    map<char, char> m_charactersMap;
 };
 
 
