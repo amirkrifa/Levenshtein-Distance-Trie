@@ -29,7 +29,6 @@ LevenshteinDistanceTrie::insert(const string& p_word)
       l_currentNode->m_nextLetters[l_word[c_char]] = new LevenshteinDistanceTrie();
       if(l_currentNode->m_nextLetters[l_word[c_char]] == NULL)
       {
-        KELOG_RELEASE((LOG_CRIT, "Memory allocation problem. Creating new LevenshteinDistanceTrie node while inserting: %s" WHERE, p_word.c_str(), HERE));
     	exit(3);
       }
     }
