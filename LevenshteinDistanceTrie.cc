@@ -43,22 +43,22 @@ LevenshteinDistanceTrie::insert(const string& p_word)
 
 void 
 LevenshteinDistanceTrie::searchForMatchingPredicatsRecur(LevenshteinDistanceTrie* p_tree,
-    	                                                 const uint32&            p_maxDistance,
+    	                                                 const unsigned int&            p_maxDistance,
     	                                                 const char&              p_ch,
-    	                                                 const vector<uint32>&    p_lastRow,
+    	                                                 const vector<unsigned uint>&    p_lastRow,
     	                                                 const string&            p_word,
-    	                                                 uint32&                  p_minCost,
+    	                                                 unsigned uint&                  p_minCost,
     	                                                 vector<string>&          p_resultVector)
 {
-  uint32 sz = p_lastRow.size();
+  unsigned int sz = p_lastRow.size();
 
-  vector<uint32> current_row(sz);
+  vector<unsigned int> current_row(sz);
   current_row[0] = p_lastRow[0] + 1;
 
   // Calculate the min cost of insertion, deletion, match or substitution
   int insert_or_del = 0, replace = 0;
 
-  for (uint32 c = 1; c < sz; ++c)
+  for (unsigned int c = 1; c < sz; ++c)
   {
     insert_or_del = min(current_row[c - 1] + 1, p_lastRow[c] + 1);
     replace = (p_word[c - 1] == p_ch) ? p_lastRow[c - 1] : (p_lastRow[c - 1] + 1);
@@ -91,12 +91,12 @@ LevenshteinDistanceTrie::searchForMatchingPredicatsRecur(LevenshteinDistanceTrie
 
 int
 LevenshteinDistanceTrie::searchForMatchingWords(const string& p_word,
-                                                const uint32& p_maxDistance,
+                                                const unsigned int& p_maxDistance,
     	                                        vector<string>& p_result)
 {
   string l_word = string("$") + p_word;
   int sz = l_word.size();
-  vector<uint32> current_row(sz + 1);
+  vector<unsigned int> current_row(sz + 1);
 
   // Naive DP initialization
   for (int c = 0; c < sz; ++c)
@@ -106,7 +106,7 @@ LevenshteinDistanceTrie::searchForMatchingWords(const string& p_word,
 
   current_row[sz] = sz;
 
-  uint32 l_minCost = 0x3f3f3f3f;
+  unsigned int l_minCost = 0x3f3f3f3f;
   // For each letter in the root map which matches with a
   //     letter in word, we must call the search
   for (int c_char = 0 ; c_char < sz; ++c_char)

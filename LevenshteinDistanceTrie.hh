@@ -31,18 +31,18 @@ public:
   //! @param p_result: (out) the resulting predicats vector
   //! @return the minimum cost
   int searchForMatchingWords(const string& p_word,
-                             const uint32& p_maxDistance,
+                             const unsigned int& p_maxDistance,
                              vector<string>& p_result);
 
 private:
      
   //!Recursive implementation for the function above
   void searchForMatchingPredicatsRecur(LevenshteinDistanceTrie* p_tree,
-                                       const uint32&            p_maxDistance,
+                                       const unsigned int32&            p_maxDistance,
                                        const char&              p_ch,
-                                       const vector<uint32>&    p_lastRow,
+                                       const vector<unsigned int>&    p_lastRow,
                                        const string&            p_word,
-                                       uint32&                  p_minCost,
+                                       unsigned int&                  p_minCost,
                                        vector<string>&          p_resultVector);
 
   // The set with all the letters which this node is prefix
